@@ -25,6 +25,13 @@
 * APIキー、アクセストークン、パスワード、秘密URL、接続文字列などの機密情報は、**絶対にソースコードに直接記述（ハードコード）してコミットしないでください。**
 * **対策:** 各プラットフォームの環境変数（`.env`、スクリプトプロパティ、GitHub Secrets、Configファイルなど）を利用し、ローカルの環境変数ファイルは `.gitignore` で必ず除外してください。
 
+具体例）
+``` js
+const spreadsheetId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; //NG
+// propertiesService.getScriptProperties().setProperty(SPREADSHEET_ID, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); //こちらでセット
+//もしくは、ウェブ画面でプロパティをセットしておく
+const spreadsheetId = propertiesService.getScriptProperties().getProperty(SPREADSHEET_ID) ; //OK
+```
 ---
 
 ## 👥 3. チーム開発・運用フロー（無料プランに合わせた注意）
